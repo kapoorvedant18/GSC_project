@@ -1,2 +1,2 @@
 # GSC_project
-A project that makes access lawyers and seeking justice easier
+To run the project click teh index.html file
