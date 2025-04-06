@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lawyer Interface - LawB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">LawB</div>
+    <div class="header-buttons">
+        <button onclick="logout()">Logout</button>
+    </div>
+</header>
+
+<div class="login-container">
+    <div class="login-box" style="margin-top: 80px;">
+        <h2>Lawyer Profile</h2>
+        <input type="text" id="experienceLevel" placeholder="Experience Level (e.g., Junior, Senior)">
+        <input type="text" id="workExperience" placeholder="Work Experience (e.g., 5 years)">
+        <input type="text" id="achievements" placeholder="Achievements (comma-separated)">
+        <textarea id="description" placeholder="Description" rows="4" style="width: 100%; margin: 10px 0;"></textarea>
+        <input type="file" id="profilePhoto" accept="image/*">
+        <button class="modal-login-btn" onclick="saveLawyerProfile()">Save / Update Profile</button>
+    </div>
+</div>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>Messages from Customers</h2>
+        <div id="lawyerMessages" class="chat-box"></div>
+    </div>
+</div>
+
+<script src="lawyer_interface.js"></script>
+</body>
+</html>

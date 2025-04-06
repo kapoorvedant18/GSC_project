@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - LawB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Register</h2>
+            <input type="text" id="fullname" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <label for="userType">Register As:</label>
+            <select id="userType" onchange="toggleAdminPassword()">
+                <option value="customer">Customer</option>
+                <option value="lawyer">Lawyer</option>
+                <option value="admin">Admin</option>
+            </select>
+            <br><br>
+
+            <input type="password" id="adminPass" placeholder="Admin Password" style="display: none;">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <input type="text" id="address" placeholder="Address" required>
+
+            <button class="modal-login-btn" onclick="registerUser()">Register</button>
+            <a href="login.html" class="back-btn">Already have an account? Login</a>
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+
+</body>
+</html>

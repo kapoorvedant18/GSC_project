@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LawB</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="chatbot-icon" onclick="toggleChat()">
+        <img src="blue-sphere.png" alt="Chat with Laila" />
+    </div>
+
+    <div id="chat-window" class="hidden">
+        <div id="chat-header">
+            <span>Laila - Legal Assistant</span>
+            <button onclick="toggleChat()">Close</button>
+        </div>
+        <div id="chat-messages"></div>
+        <input type="text" id="user-input" placeholder="Ask a legal question..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <header>
+        <div class="logo">LawB</div>
+        <div class="header-buttons">
+            <a href="login.html" class="login-btn" id="loginBtn">Login</a>
+            <button class="settings-btn">⚙</button>
+            <div class="dropdown-menu" id="settingsDropdown">
+                <button id="profileBtn">Profile</button>
+                <button id="logoutBtn" style="display:none;">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="adminPanel" style="display: none;">
+        <h2>Admin Controls</h2>
+        <button onclick="removeAllUsers()">Remove All Users</button>
+        <button onclick="deleteLawyerProfile()">Delete Lawyer Profile</button>
+        <button onclick="showAddLawyerForm()">Add Lawyer</button>
+    </div>
+
+    <div id="addLawyerForm" style="display: none;">
+        <h3>Add New Lawyer</h3>
+        <input type="text" id="lawyerName" placeholder="Lawyer Name" />
+        <input type="text" id="lawyerCity" placeholder="City" />
+        <input type="number" id="casesWon" placeholder="Cases Won" />
+        <input type="text" id="lawyerSpecialty" placeholder="Specialty" />
+        <textarea id="lawyerDescription" placeholder="Description"></textarea>
+        <input type="text" id="lawyerImage" placeholder="Image URL" />
+        <button onclick="addLawyer()">Submit</button>
+    </div>
+
+    <main>
+        <div class="selection-container">
+            <select id="state">
+                <option>Select State</option>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Karnataka</option>
+            </select>
+            <select id="city">
+                <option>Select City</option>
+            </select>
+            <select id="lawyerType">
+                <option>Select Lawyer Type</option>
+                <option>Criminal</option>
+                <option>Family</option>
+                <option>Corporate</option>
+                <option>Civil</option>
+            </select>
+        </div>
+
+        <div class="lawyer-profiles"></div>
+    </main>
+
+    <script>
+        const apiKey = 'AIzaSyBmA53PrcyNw600cAAWNfHy5HVA0uaTwVE'; // Replace with your actual Gemini API key
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input').value.trim();
+            if (!input) return;
+
+            appendMessage('You', input);
+            document.getElementById('user-input').value = '';
+
+            // Check if the user typed "hi" (case-insensitive)
+            if (input.toLowerCase() === 'hi') {
+                appendMessage('Laila', 'Hello, I am Laila, your legal aid.');
+                return;
+            }
+
+            // Otherwise, fetch the response from the API
+            const response = await getLailaResponse(input);
+            appendMessage('Laila', response);
+        }
+
+        function appendMessage(sender, message) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = 'chat-message';
+            div.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        async function getLailaResponse(query) {
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent?key=${apiKey}`;
+            const body = {
+                contents: [{
+                    parts: [{ text: `You are Laila, a legal assistant. Only respond to law-related questions. If the question is unrelated, say "I can only help with legal queries." User asked: ${query}` }]
+                }],
+                generationConfig: {
+                    temperature: 0.7,
+                    maxOutputTokens: 200, // Adjust as needed
+                }
+            };
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                if (!res.ok) {
+                    console.error('API Error:', res.status, res.statusText);
+                    return 'Sorry, I cannot reply now.';
+                }
+
+                const data = await res.json();
+                console.log('API Response:', data);
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, no response.';
+            } catch (e) {
+                console.error('Error fetching response:', e);
+                return 'Sorry, I cannot reply now.';
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

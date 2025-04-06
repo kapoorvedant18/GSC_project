@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - LawB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-box">
+            <h2>Profile</h2>
+            <p><strong>Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+            <p><strong>User Type:</strong> <span id="profile-type"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="profile-dob"></span></p>
+            <p><strong>Address:</strong> <span id="profile-address"></span></p>
+            <button class="modal-login-btn" onclick="logout()">Logout</button>
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                document.getElementById("profile-name").textContent = user.fullname;
+                document.getElementById("profile-email").textContent = user.email;
+                document.getElementById("profile-type").textContent = user.userType;
+                document.getElementById("profile-dob").textContent = user.dob;
+                document.getElementById("profile-address").textContent = user.address;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

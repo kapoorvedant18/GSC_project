@@ -1,0 +1,411 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full Page Background */
+body {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+header {
+    background-color: rgb(108, 74, 67);
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Company Name */
+.logo {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+/* Header Buttons */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* Universal Button Styling (Login & Settings) */
+button, .login-btn {
+    background: linear-gradient(to bottom, rgb(108, 74, 67), rgb(85, 58, 52));
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+/* Hover Effects for Buttons */
+button:hover, .login-btn:hover {
+    background: linear-gradient(to bottom, rgb(85, 58, 52), rgb(108, 74, 67));
+    transform: scale(1.05);
+}
+
+/* Center Login Button on Webpage */
+.center-login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Settings Button Icon */
+.settings-btn {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: rgb(85, 58, 52);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 140px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    background: rgb(85, 58, 52);
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.dropdown-item:hover {
+    background: rgb(108, 74, 67);
+    transform: scale(1.02);
+}
+
+/* Selection Section */
+.selection-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Select Dropdowns */
+select {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid rgb(85, 58, 52);
+    background: rgb(108, 74, 67);
+    color: white;
+    cursor: pointer;
+}
+
+/* Lawyer Profiles */
+.lawyer-profiles {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Lawyer Card */
+.lawyer-card {
+    background: linear-gradient(to bottom, rgb(108, 74, 67), rgb(85, 58, 52));
+    width: 280px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lawyer-card:hover {
+    transform: scale(1.05);
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Lawyer Image */
+.lawyer-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Login Page */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1); /* Slightly faded background */
+}
+
+/* Login Box */
+.login-box {
+    background-color: white;
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for 3D effect */
+}
+
+/* Heading */
+.login-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Login Button Inside Modal */
+.modal-login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to bottom, rgb(108, 74, 67), rgb(85, 58, 52));
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Effect */
+.modal-login-btn:hover {
+    background: linear-gradient(to bottom, rgb(85, 58, 52), rgb(108, 74, 67));
+    transform: scale(1.05);
+}
+
+/* Forgot Password and Register Links */
+.forgot-password, .register-link {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover, .register-link:hover {
+    text-decoration: underline;
+}
+
+/* Back Button */
+.back-btn {
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+/* Profile Page */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.profile-box {
+    background-color: white;
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-box p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Back Button */
+.back-btn {
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Theme Selection Menu */
+.theme-menu {
+    position: absolute;
+    top: 50%;
+    right: 120%; /* Moves the options to the left of the theme button */
+    background: rgb(85, 58, 52);
+    border-radius: 8px;
+    display: flex; /* Makes the buttons appear side by side */
+    gap: 5px;
+    padding: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.theme-menu button {
+    background: rgb(108, 74, 67);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.theme-menu button:hover {
+    background: rgb(85, 58, 52);
+    transform: scale(1.05);
+}
+
+.customer-list {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.chat-container {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.chat-box {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.sent {
+    text-align: right;
+    background: #daf7a6;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.received {
+    text-align: left;
+    background: #ddd;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+/* Chatbot Icon */
+#chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  #chatbot-icon img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Chat Window */
+  #chat-window {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    width: 300px;
+    max-height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+  }
+  
+  #chat-header {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  #chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  #user-input {
+    border: none;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    width: calc(100% - 20px);
+  }
+  
+  #chat-window.hidden {
+    display: none;
+  }
+  

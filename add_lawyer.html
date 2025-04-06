@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Lawyer</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #401515;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .preview-img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Add New Lawyer</h2>
+        <form id="lawyerForm">
+            <label for="name">Lawyer Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" required>
+
+            <label for="casesWon">Cases Won:</label>
+            <input type="number" id="casesWon" required>
+
+            <label for="specialty">Specialty:</label>
+            <select id="specialty">
+                <option value="Criminal">Criminal</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Family">Family</option>
+                <option value="Civil">Civil</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea id="description" rows="3" required></textarea>
+
+            <label for="image">Upload Photo:</label>
+            <input type="file" id="image" accept="image/*">
+            <img id="preview" class="preview-img" src="default.jpg" alt="Preview">
+
+            <button type="submit">Add Lawyer</button>
+            <button type="button" onclick="window.location.href='index.html'">Cancel</button>
+        </form>
+    </div>
+
+    <script src="add_lawyer.js"></script>
+</body>
+</html>
