@@ -1,17 +1,22 @@
 {
-  "name": "godev",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "analytics",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vercel/analytics.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "license": "MPL-2.0",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "prettier": "@vercel/style-guide/prettier",
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
-    "express": "^4.21.2"
-  }
+    "lint-staged": "^13.2.2"
+  },
+  "devDependencies": {
+    "@vercel/style-guide": "^5.0.1",
+    "husky": "^8.0.3",
+    "prettier": "2.8.8",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "pnpm@8.6.5"
 }
